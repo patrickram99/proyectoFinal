@@ -1,0 +1,24 @@
+# ninja log v5
+3	343	6887497917365873	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+343	424	6887497918138013	proyectoFinal.exe	bec8a96b46727980
+1	217	6887499657789272	build.ninja	8ef39072b68cd51
+2	337	6887503127363990	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+338	423	6887503128180594	proyectoFinal.exe	bec8a96b46727980
+2	350	6887503421968461	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+351	434	6887503422766074	proyectoFinal.exe	bec8a96b46727980
+4	337	6887503525986369	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+338	423	6887503526804393	proyectoFinal.exe	bec8a96b46727980
+3	342	6887503618875063	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+342	425	6887503619673342	proyectoFinal.exe	bec8a96b46727980
+2	338	6887503678123928	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+339	418	6887503678888142	proyectoFinal.exe	bec8a96b46727980
+3	748	6887516726765172	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+748	950	6887516728759387	proyectoFinal.exe	bec8a96b46727980
+4	328	6887516792894226	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+329	414	6887516793708452	proyectoFinal.exe	bec8a96b46727980
+2	329	6887516875863720	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+330	413	6887516876657896	proyectoFinal.exe	bec8a96b46727980
+3	326	6887516981271937	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+327	413	6887516982100164	proyectoFinal.exe	bec8a96b46727980
+3	333	6887517045373686	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	f9f2af69b87eeb5
+333	418	6887517046181920	proyectoFinal.exe	bec8a96b46727980
