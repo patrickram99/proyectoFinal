@@ -1,8 +1,10 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include "tela.h"
 
+void prueba(){
+    string p = "Github funciona pls";
+}
 int main()
 {
     //Declaramos un vector dinamico para almacenar los datos de las telas
