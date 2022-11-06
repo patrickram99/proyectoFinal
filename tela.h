@@ -34,7 +34,8 @@ void almacenarDatos(tela *datosTelas, string fichero) {
     string linea;
     std::fstream telasFichero;
     telasFichero.open(fichero, std::ios::in);
-    // Leer y almacenar los datos del archivo en un array
+    if(telasFichero.is_open()){
+        // Leer y almacenar los datos del archivo en un array
         for (size_t i = 0; i < 5; ++i){
             std::getline(telasFichero, datosTelas[i].identificador);
             std::getline(telasFichero, datosTelas[i].nombre);
@@ -47,6 +48,9 @@ void almacenarDatos(tela *datosTelas, string fichero) {
             datosTelas[i].precio = std::stod(linea);
         }
         telasFichero.close();
+    } else{
+        std::cout << "No se pudo abrir el archivo";
+    }
 }
 
 void consultarTela(const tela* datosTelas){
