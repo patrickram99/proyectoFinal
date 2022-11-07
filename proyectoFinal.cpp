@@ -3,7 +3,6 @@
 
 int main(){
     //Declaramos un vector dinamico para almacenar los datos de las telas
-    std::cout<< "mAMI";
     int numTelas = 5;
     tela* datosTelas;
     datosTelas = new tela[numTelas];
@@ -29,6 +28,8 @@ int main(){
             listarTelas(datosTelas);
         }
     } else if(opcion == "Vender"){
+        std::cout << "Ingrese el tipo de tela" << std::endl;
+        std::cout << "Ingrese la canidad de metros" << std::endl;
 
     } else{
 
