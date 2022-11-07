@@ -1,6 +1,6 @@
 # ninja log v5
-3	465	6890208760759207	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	6591b83c82a27ebd
-465	582	6890208761876268	proyectoFinal.exe	bec8a96b46727980
-1	217	6894636038978561	build.ninja	8ef39072b68cd51
-5	909	6894636066566287	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	6591b83c82a27ebd
-909	1054	6894636067974342	proyectoFinal.exe	bec8a96b46727980
+3	428	6895301119178203	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	6591b83c82a27ebd
+429	566	6895301120514128	proyectoFinal.exe	bec8a96b46727980
+1	217	6895303724606614	build.ninja	8ef39072b68cd51
+4	476	6895304694050875	CMakeFiles/proyectoFinal.dir/proyectoFinal.cpp.obj	6591b83c82a27ebd
+477	574	6895304695005922	proyectoFinal.exe	bec8a96b46727980
