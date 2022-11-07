@@ -1,3 +1,3 @@
-D:/Lenguaje de Programacion 1/proyectoFinal/cmake-build-debug/CMakeFiles/proyectoFinal.dir
-D:/Lenguaje de Programacion 1/proyectoFinal/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Lenguaje de Programacion 1/proyectoFinal/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/u/Documents/GitHub/proyectoFinal/cmake-build-debug/CMakeFiles/proyectoFinal.dir
+C:/Users/u/Documents/GitHub/proyectoFinal/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/u/Documents/GitHub/proyectoFinal/cmake-build-debug/CMakeFiles/rebuild_cache.dir

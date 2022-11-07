@@ -3,6 +3,7 @@
 
 int main(){
     //Declaramos un vector dinamico para almacenar los datos de las telas
+    std::cout<< "mAMI";
     int numTelas = 5;
     tela* datosTelas;
     datosTelas = new tela[numTelas];
@@ -17,6 +18,7 @@ int main(){
 
 
     if(opcion == "Mantenimiento"){
+
         std::cout << "Desea Consultar tela, Modificar tela o Listar" << std::endl;
         std::getline(std::cin, opcion);
         if(opcion == "Consultar tela"){
