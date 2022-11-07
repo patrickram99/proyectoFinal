@@ -2,6 +2,8 @@
 #define PROYECTOFINAL_TELA_H
 #include <fstream>
 #include <vector>
+#include<map>
+
 
 using std::string;
 
@@ -15,12 +17,12 @@ public:
     double              precio;
 
     void imprimir() const{
-        std::cout << "Codigo "      << identificador << ": \n"
-                  << "Descripcion: "<< nombre        << "\n"
-                  << "Material: "   << composicion   << "\n"
-                  << "Ancho: "      << ancho         << "\n"
-                  << "Peso: "       << peso          << "\n"
-                  << "Precio: "     << precio        << "\n";
+        std::cout << "Codigo "      << identificador << std::endl
+                  << "Descripcion: "<< nombre        << std::endl
+                  << "Material: "   << composicion   << std::endl
+                  << "Ancho: "      << ancho         << std::endl
+                  << "Peso: "       << peso          << std::endl
+                  << "Precio: "     << precio        << std::endl;
 
     }
 };
@@ -30,6 +32,9 @@ public:
     int identificador;
 
 };
+
+
+
 void almacenarDatos(tela *datosTelas, string fichero) {
     string linea;
     std::fstream telasFichero;
@@ -61,16 +66,16 @@ void consultarTela(const tela* datosTelas){
 }
 
 void modificarTela(tela* &datosTelas) {
-    string opcion;
+    string telaModificar;
     std::vector<string> aspectos = {"Identificador", "Descripcion", "Material", "Ancho", "Peso", "Precio"};
     std::cout << "Ingrese el identificador de la tela a modificar: " << std::endl;
-    std::cin >> opcion;
+    std::cin >> telaModificar;
     for(int i = 0; i < 5; ++i){
-        if(std::stoi(opcion.substr(2, 1)) == i){
+        if(std::stoi(telaModificar.substr(2, 1)) == i){
             std::cout << "Que aspecto desea modificar: ";
-            std::cin >> opcion;
+            std::cin >> telaModificar;
             for(size_t j = 0; j < aspectos.size(); ++j){
-                if(opcion == aspectos[j]){
+                if(telaModificar == aspectos[j]){
 
                 }
             }

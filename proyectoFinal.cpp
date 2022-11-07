@@ -15,6 +15,7 @@ int main(){
     std::cout << "Elija una opcion: Mantenimiento, Vender, Reportes, Configuracion o Salir"<< std::endl;
     std::getline(std::cin, opcion);
 
+
     if(opcion == "Mantenimiento"){
         std::cout << "Desea Consultar tela, Modificar tela o Listar" << std::endl;
         std::getline(std::cin, opcion);
