@@ -7,8 +7,7 @@
 
 using std::string;
 
-class tela{
-public:
+struct tela{
     string              identificador;
     string              nombre;
     string              composicion;
@@ -24,6 +23,36 @@ public:
                   << "Peso: "       << peso          << std::endl
                   << "Precio: "     << precio        << std::endl;
 
+    }
+    void editarTela(int aspecto) {
+        std::string mod;
+        switch (aspecto) {
+            case 0:
+                std::cout << "Ingrese el nuevo valor: " << std::endl;
+                std::cin >> mod;
+                nombre = mod;
+                break;
+            case 1:
+                std::cout << "Ingrese el nuevo valor: " << std::endl;
+                std::cin >> mod;
+                composicion = mod;
+                break;
+            case 2:
+                std::cout << "Ingrese el nuevo valor: " << std::endl;
+                std::cin >> mod;
+                ancho = std::stoi(mod);
+                break;
+            case 3:
+                std::cout << "Ingrese el nuevo valor: " << std::endl;
+                std::cin >> mod;
+                peso = std::stoi(mod);
+                break;
+            case 4:
+                std::cout << "Ingrese el nuevo valor: " << std::endl;
+                std::cin >> mod;
+                precio = std::stod(mod);
+                break;
+        }
     }
 };
 
@@ -64,25 +93,16 @@ void consultarTela(const tela* datosTelas){
     std::cin >> opcion;
     datosTelas[std::stoi(opcion.substr(2, 1))].imprimir();
 }
-
-void modificarTela(tela* &datosTelas) {
-    string telaModificar;
-    std::vector<string> aspectos = {"Identificador", "Descripcion", "Material", "Ancho", "Peso", "Precio"};
-    std::cout << "Ingrese el identificador de la tela a modificar: " << std::endl;
-    std::cin >> telaModificar;
-    for(int i = 0; i < 5; ++i){
-        if(std::stoi(telaModificar.substr(2, 1)) == i){
-            std::cout << "Que aspecto desea modificar: ";
-            std::cin >> telaModificar;
-            for(size_t j = 0; j < aspectos.size(); ++j){
-                if(telaModificar == aspectos[j]){
-
-                }
-            }
-
+std::vector<std::string> nombres = {"Descripcion", "Material", "Ancho", "Peso", "Precio"};
+int num(std::string &as){
+    for(int id = 0; id < 5; id++){
+        if(nombres[id] == as){
+            return id;
         }
     }
 }
+
+
 
 void listarTelas(const tela* datosTelas){
     std::cout << "LISTADO DE TELAS: \n" << std::endl;
@@ -90,6 +110,18 @@ void listarTelas(const tela* datosTelas){
         datosTelas[i].imprimir();
         std::cout << std::endl;
     }
+}
+
+void modificarTela(tela* datosTelas) {
+    int pos;
+    std::string aspecto;
+    std::cout << "Ingrese el identificador de la tela a modificar: " << std::endl;
+    std::cin >> aspecto;
+    pos = std::stoi(aspecto.substr(2, 1));
+    std::cout << "Ingrese el aspecto a modificar: " << std::endl;
+    std::cin >> aspecto;
+    datosTelas[pos].editarTela(num(aspecto));
+    datosTelas[pos].imprimir();
 }
 
 #endif //PROYECTOFINAL_TELA_H
