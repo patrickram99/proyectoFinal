@@ -1,5 +1,6 @@
 #ifndef PROYECTOFINAL_TELA_H
-#define PROYECTOFINAL_TELA_H#include <iostream>
+#define PROYECTOFINAL_TELA_H
+#include <iostream>
 #include <vector>
 #include <fstream>
 #include <string>
@@ -26,10 +27,17 @@ public:
     {
     }
 
+    std::string getDescripcion(){
+        return m_descripcion;
+    }
+    int getPrecio(){
+        return m_precio;
+    }
+
     void imprimir() const{
         std::cout << "Codigo "      << m_identificador << std::endl
-                  << "Descripcion: "<< m_descripcion        << std::endl
-                  << "Material: "   << m_material   << std::endl
+                  << "Descripcion: "<< m_descripcion   << std::endl
+                  << "Material: "   << m_material      << std::endl
                   << "Ancho: "      << m_ancho         << std::endl
                   << "Peso: "       << m_peso          << std::endl
                   << "Precio: "     << m_precio        << std::endl;
@@ -39,14 +47,14 @@ public:
         std::string mod;
         switch (aspecto) {
             case 0:
-                std::cout << "Ingrese el nuevo valor: " << std::endl;
+                std::cout << "Ingrese el nuevo valor de la descripcion: " << std::endl;
                 std::cin >> mod;
                 m_descripcion = mod;
                 break;
             case 1:
                 std::cout << "Ingrese el nuevo valor: " << std::endl;
                 std::cin >> mod;
-            m:m_material = mod;
+                m_material = mod;
                 break;
             case 2:
                 std::cout << "Ingrese el nuevo valor: " << std::endl;
@@ -65,12 +73,43 @@ public:
                 break;
         }
     }
+};
+
+class Ventas{
+    int mv_numBoleta; //Numero de boleta
+    std::string mv_descTela; // Descripcion de la tela
+    double mv_pMetro; // Precio por metro
+    int mv_cMetro; //Cantidad de metro
+    double mv_impCompra; //Importe de la compra
+    double mv_cantDescuento; //Monto de descuento
+    double mv_impPagar; //Importe a pagar
+
+public:
+
+    Ventas(){};
+
+    Ventas(Telas &a, int cant, double desc)
+    : mv_descTela(a.getDescripcion())
+    , mv_pMetro(a.getPrecio())
+    , mv_cMetro(cant)
+    , mv_impCompra(cant * a.getPrecio())
+    , mv_cantDescuento(desc)
+    , mv_impPagar(mv_impCompra - mv_impCompra * desc/100)
+
+    {
+    }
+
 
 };
 
+
+
 class Inventario{
-    std::string m_fecha;
-    std::vector<Telas> m_telas;
+    std::string mi_fecha;
+    std::vector<Telas> mi_telas;
+    std::vector<double> mi_descuentos;
+    std::vector<Ventas> mi_ventas;
+
     std::vector<std::string> nombres = {"Descripcion", "Material", "Ancho", "Peso", "Precio"};
     int num(std::string &as){
         for(int id = 0; id < 5; id++){
@@ -79,15 +118,17 @@ class Inventario{
             }
         }
     }
+
 public:
     Inventario(){}
 
     Inventario(const std::string &fecha)
-            :  m_fecha(fecha)
+            :  mi_fecha(fecha)
     {
     }
 
-    void cargarDatos(const std::string &fichero){
+
+    void cargarTelas(const std::string &fichero){
         std::string identificador, descripcion, material;
         std::string temp;
         int ancho, peso;
@@ -104,21 +145,25 @@ public:
             precio = stod(temp);
             nuevaTela(Telas(identificador, descripcion, material, ancho, peso, precio));
         }
-
-
+        telasFichero.close();
     }
 
+    std::vector<double> getConfig(){
+        return mi_descuentos;
+    };
+
+
     void nuevaTela(const Telas &t){
-        m_telas.push_back(t);
+        mi_telas.push_back(t);
     }
 
     void consultarTela(int num){
-        m_telas[num].imprimir();
+        mi_telas[num].imprimir();
     }
 
     void listar() const{
         std::cout << "LISTADO DE TELAS: " << std::endl;
-        for(auto &t : m_telas){
+        for(auto &t : mi_telas){
             t.imprimir();
             std::cout << std::endl;
         }
@@ -132,9 +177,28 @@ public:
         pos = std::stoi(aspecto.substr(2, 1));
         std::cout << "Ingrese el aspecto a modificar: " << std::endl;
         std::cin >> aspecto;
-        m_telas[pos].editarTela(num(aspecto));
-        m_telas[pos].imprimir();
+        mi_telas[pos].editarTela(num(aspecto));
+        mi_telas[pos].imprimir();
     }
+
+    void cargarConfig(const std::string &fichero){
+        std::ifstream telasFichero(fichero);
+        double temp;
+        while (telasFichero >> temp) {
+            mi_descuentos.push_back(temp);
+        }
+    }
+    void nuevaVenta(){
+
+    }
+
+
+    void registrarVenta(){
+        int m;
+        std::cout << "Ingrese el numero de metros vendidos: " << std::endl;
+        std::cin >> m;
+
+    };
 };
 
 #endif //PROYECTOFINAL_TELA_H
