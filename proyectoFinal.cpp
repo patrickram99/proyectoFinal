@@ -1,17 +1,12 @@
 #include <iostream>
 #include "tela.h"
 
-int main(){
-    //Declaramos un vector dinamico para almacenar los datos de las telas
-    int numTelas = 5;
-    tela* datosTelas;
-    datosTelas = new tela[numTelas];
-
-    //Almacenamos los datos del ficero en el array datosTelas
-    almacenarDatos(datosTelas,"telas-data.txt");
+int main() {
+    Inventario Telas_SA("14/11/2022");
+    Telas_SA.cargarDatos("telas-data.txt");
 
     //Comenzamos con el menú de opciones
-    string opcion;
+    std::string opcion;
     std::cout << "Elija una opcion: Mantenimiento, Vender, Reportes, Configuracion o Salir"<< std::endl;
     std::getline(std::cin, opcion);
 
@@ -21,11 +16,14 @@ int main(){
         std::cout << "Desea Consultar tela, Modificar tela o Listar" << std::endl;
         std::getline(std::cin, opcion);
         if(opcion == "Consultar tela"){
-            consultarTela(datosTelas);
+            std::cin >> opcion;
+            Telas_SA.consultarTela(std::stoi(opcion.substr(2, 1)));
         } else if(opcion == "Modificar tela"){
-            modificarTela(datosTelas);
+            std::cout << "Ingrese el código de la tela a modificar: " << std::endl;
+            std::cin >> opcion;
+            Telas_SA.consultarTela(std::stoi(opcion.substr(2, 1)));
         } else{
-            listarTelas(datosTelas);
+            Telas_SA.listar();
         }
     } else if(opcion == "Vender"){
         std::cout << "Ingrese el tipo de tela" << std::endl;
@@ -35,6 +33,5 @@ int main(){
 
     }
 
-    delete[] datosTelas;
     return 0;
 }
