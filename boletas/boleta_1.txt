@@ -1,0 +1,7 @@
+BOLETA DE VENTA   :  1         
+Tela              :  Laurent 3 
+Precio            :  18.00     
+Cantidad          :  15        
+Importe compra    :  270.00    
+Descuento         :  18.90     
+Importe pagar     :  251.10    

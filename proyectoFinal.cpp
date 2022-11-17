@@ -23,9 +23,7 @@ int main() {
             Telas_SA.listar();
         }
     } else if(opcion == "Vender"){
-        std::cout << "Ingrese el tipo de tela" << std::endl;
-        std::cout << "Ingrese la canidad de metros" << std::endl;
-
+        Telas_SA.registrarVenta();
     } else{
     }
     return 0;
