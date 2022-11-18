@@ -1,7 +1,7 @@
 BOLETA DE VENTA   :  1         
-Tela              :  Laurent 3 
-Precio            :  18.00     
+Tela              :  Leni 1    
+Precio            :  37.20     
 Cantidad          :  15        
-Importe compra    :  270.00    
-Descuento         :  18.90     
-Importe pagar     :  251.10    
+Importe compra    :  558.00    
+Descuento         :  39.06     
+Importe pagar     :  518.94    

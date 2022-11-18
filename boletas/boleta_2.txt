@@ -1,7 +1,7 @@
 BOLETA DE VENTA   :  2         
-Tela              :  Leni 1    
-Precio            :  37.00     
-Cantidad          :  28        
-Importe compra    :  1036.00   
-Descuento         :  88.06     
-Importe pagar     :  947.94    
+Tela              :  Pinstripe Suit 1
+Precio            :  9.40      
+Cantidad          :  48        
+Importe compra    :  451.20    
+Descuento         :  38.35     
+Importe pagar     :  412.85    

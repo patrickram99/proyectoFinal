@@ -6,6 +6,13 @@
 #include <string>
 #include <iomanip>
 
+struct Reporte{
+    int         metrosTotales = 0;
+    int         ventasEfectuadas = 0;
+    double      ventasTotales = 0;
+};
+
+
 class Telas {
     std::string     m_identificador;
     std::string     m_descripcion;
@@ -27,12 +34,15 @@ public:
             , m_precio          (precio)
     {
     }
-
+    Reporte         m_dataReporte;
     std::string getDescripcion(){
         return m_descripcion;
     }
-    int getPrecio(){
+    double getPrecio() const{
         return m_precio;
+    }
+    std::string getID() const{
+        return m_identificador;
     }
 
     void imprimir() const{
@@ -42,6 +52,15 @@ public:
                   << "Ancho: "      << m_ancho         << std::endl
                   << "Peso: "       << m_peso          << std::endl
                   << "Precio: "     << m_precio        << std::endl;
+    }
+
+    void imprimirReporte() const{
+        std::cout        << std::setprecision(2) << std::fixed << std::left <<
+        std::setw(30)    << "Codigo "                                << std::setw(10) <<    m_identificador  << std::endl <<
+        std::setw(30)    << "Descripcion: "                          << std::setw(10) <<    m_descripcion    << std::endl <<
+        std::setw(30)    << "Cantidad total de ventas: "             << std::setw(10) <<    m_dataReporte.ventasEfectuadas      << std::endl <<
+        std::setw(30)    << "Cantidad total de metros vendidos: "    << std::setw(10) <<    m_dataReporte.metrosTotales          << std::endl <<
+        std::setw(30)    << "Importe total acumulado: "             << std::setw(10) <<    m_dataReporte.ventasTotales     << std::endl;
     }
 
     void editarTela(int aspecto) {
@@ -72,6 +91,8 @@ public:
                 std::cin >> mod;
                 m_precio = std::stod(mod);
                 break;
+            default:
+                std::cout << "Ingrese un identificador valido: ";
         }
     }
 };
@@ -126,15 +147,18 @@ public:
         fic.close();
     }
 
+    double getVentaTotal() const{
+        return mv_impPagar;
+    }
+
 };
-
-
 
 class Inventario{
     std::string             mi_fecha;      //Vector de inventario para guardar versiones
     std::vector<Telas>      mi_telas;      //Vector de telas
     std::vector<double>     mi_descuentos; //Vector de configuración
     std::vector<Ventas>     mi_ventas;     //Vector de ventas
+
 
     //Función para retornar un número en base a un string para poder usar switch case en las funciones
     std::vector<std::string> nombres = {"Descripcion", "Material", "Ancho", "Peso", "Precio"};
@@ -155,6 +179,7 @@ public:
     }
 
     //Funciones del menu de mantenimiento
+
     void cargarTelas(const std::string &fichero){
         std::string identificador, descripcion, material;
         std::string temp;
@@ -174,11 +199,6 @@ public:
         }
         telasFichero.close();
     }
-
-    std::vector<double> getConfig(){
-        return mi_descuentos;
-    };
-
 
     void nuevaTela(const Telas &t){
         mi_telas.push_back(t);
@@ -221,7 +241,7 @@ public:
         mi_ventas.push_back(v);
     }
 
-    double setDescuento(std::vector<double> &d, int can){
+    double static setDescuento(std::vector<double> &d, int can){
         double descuento;
         if(can <= 5){
             descuento = d[0];
@@ -235,7 +255,7 @@ public:
         return descuento;
     }
 
-    void generarBoletas(std::vector<Ventas> ventas){
+    void static generarBoletas(std::vector<Ventas> &ventas){
         int i = 1;
         for(auto v: ventas){
             std::string nombreBoleta = "D:\\Lenguaje de Programacion 1\\proyectoFinal\\boletas\\boleta_" + std::to_string(i) + ".txt";
@@ -257,8 +277,15 @@ public:
             std::cin >> id;
             std::cout << "Ingrese el numero de metros vendidos: " << std::endl;
             std::cin >> can;
+
             double desc = setDescuento(mi_descuentos, can);
-            nuevaVenta(Ventas(numBoleta, mi_telas[id], can, desc));
+            Ventas temp = Ventas(numBoleta, mi_telas[id], can, desc);
+            nuevaVenta(temp);
+
+            mi_telas[id].m_dataReporte.metrosTotales += can;
+            mi_telas[id].m_dataReporte.ventasEfectuadas += 1;
+            mi_telas[id].m_dataReporte.ventasTotales += temp.getVentaTotal();
+
             std::cout << "Desea registrar mas ventas: (Si para continuar)" << std::endl;
             std::cin >> registro;
         }
@@ -267,6 +294,63 @@ public:
         }
         generarBoletas(mi_ventas);
     };
-};
 
+    //Funciones del menú reportes
+    void reportesVentasPorTela(){
+        double totalImportes = 0;
+        std::cout << std::setw(20)    <<  "VENTAS POR TELA" << std::endl << std::endl;
+        for(auto &t: mi_telas){
+            totalImportes += t.m_dataReporte.ventasTotales;
+            t.imprimirReporte();
+        }
+        std::cout << std::endl << std::endl << "Importe total acumulado general: " << totalImportes << std::endl;
+    }
+
+    void reportesTelasOptimas(){
+        std::cout << "TELAS CON VENTA OPTIMA: " << std::endl << std::endl;
+        for(auto &t : mi_telas){
+            if(t.m_dataReporte.metrosTotales > mi_descuentos[5]){
+                std::cout << std::setw(20) << "Codigo" << std::setw(3) << ":" << std::setw(20) << t.getID()
+                          << std::setw(20) << "Descripcion" << std::setw(3) << ":" << std::setw(20) << t.getDescripcion()
+                          << std::setw(20) << "Metros vendidos" << std::setw(3) << ":" << std::setw(20) << t.m_dataReporte.metrosTotales
+                          << " (" << t.m_dataReporte.metrosTotales - mi_descuentos[5] << " más que la cantidad optima)"<< std::endl << std::endl;
+            }
+        }
+    }
+
+    void menuReportes(Inventario &I){
+        char op1;
+        std::cout << "1. Ventas por tela, 2. Telas con venta optima";
+        std::cin >> op1;
+        if(op1 == '1'){
+            I.reportesVentasPorTela();
+        } else{
+            I.reportesTelasOptimas();
+        }
+    }
+
+
+    //Funciones menu configuracion
+    void menuConfig(Inventario &I){
+        int op1;
+        double nuevoValor;
+        std::cout << "1. Configurar descuentos, 2. Configurar venta optima";
+        std::cin >> op1;
+        if(op1 == '1'){
+            std::cout << "Descuento a modificar (0, 1, 2, 3, 4)";
+            std::cin >> op1;
+            std::cout << "Ingrese el nuevo valor: ";
+            std::cin >> nuevoValor;
+            for(int i = 0; i < 5; ++i){
+                if(i == op1){
+                    mi_descuentos[i] = nuevoValor;
+                }
+            }
+        } else{
+            std::cout << "Ingrese el nuevo valor de ventas optimas: ";
+            std::cin >> mi_descuentos[5];
+        }
+    }
+
+};
 #endif //PROYECTOFINAL_TELA_H
