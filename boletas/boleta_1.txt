@@ -1,7 +1,0 @@
-BOLETA DE VENTA   :  1         
-Tela              :  Leni 1    
-Precio            :  37.20     
-Cantidad          :  15        
-Importe compra    :  558.00    
-Descuento         :  39.06     
-Importe pagar     :  518.94    

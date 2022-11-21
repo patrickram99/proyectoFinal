@@ -1,7 +1,0 @@
-BOLETA DE VENTA   :  4         
-Tela              :  Sarga 2   
-Precio            :  31.80     
-Cantidad          :  78        
-Importe compra    :  2480.40   
-Descuento         :  210.83    
-Importe pagar     :  2269.57   
