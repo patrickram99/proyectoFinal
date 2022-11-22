@@ -25,7 +25,7 @@ public:
 
     void generarBoletas(){
         for(auto &v: registroVentas){
-            string nombreBoleta = "D:\\Lenguaje de Programacion 1\\proyectoFinal\\boletas_" + to_string(numBoleta) + ".txt";
+            string nombreBoleta = "D:\\Lenguaje de Programacion 1\\proyectoFinal\\boletas\\boleta_" + to_string(numBoleta) + ".txt";
             ofstream boleta(nombreBoleta);
             v.guardarVentaTxt(v, boleta);
             numBoleta++;

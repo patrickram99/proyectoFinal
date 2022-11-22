@@ -1,0 +1,7 @@
+BOLETA DE VENTA   :  1         
+Tela              :  Pinstripe Suit 1
+Precio            :  9.40      
+Cantidad          :  15        
+Importe compra    :  141.00    
+Descuento         :  11.28     
+Importe pagar     :  129.72    

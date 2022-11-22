@@ -1,0 +1,7 @@
+BOLETA DE VENTA   :  2         
+Tela              :  Gabardina Oslo 5
+Precio            :  11.30     
+Cantidad          :  47        
+Importe compra    :  531.10    
+Descuento         :  254.93    
+Importe pagar     :  276.17    

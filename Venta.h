@@ -86,8 +86,8 @@ void cargarVentas(string const &fichero){
     double desc;
     ifstream registroV(fichero);
     if(registroV.is_open()){
-        numBoleta = 1;
         registroV >> numBoleta;
+        numBoleta = 1;
         while (registroV >> id){
             registroV >> m >> desc;
             registroVentas.emplace_back(Venta(dataTelas[id], m, desc));
