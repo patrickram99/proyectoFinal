@@ -37,7 +37,7 @@ public:
 
     string cantidadOptima(int num){
         if(num > metrosOptimos){
-            return (" (" + to_string(num - metrosOptimos) + " mas que la cantidad optima)");
+            return (to_string(num) + " (" + to_string(num - metrosOptimos) + " mas que la cantidad optima)");
         } else if( num == metrosOptimos){
             return " (Igual a la cantidad optima)";
         } else {

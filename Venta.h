@@ -103,14 +103,15 @@ void registrarVentas(){
     do {
         int can;
         int id;
-        std::cout << "Ingrese el identificador del tipo de tela: " << std::endl;
-        std::cin >> id;
-        std::cout << "Ingrese el numero de metros vendidos: " << std::endl;
-        std::cin >> can;
+        cout << "Ingrese el identificador del tipo de tela: " << endl
+        << "0. TLO" << endl << "1. TL1" << endl << "2. TL2" << endl << "3. TL3" << "4. TL4" << endl;
+        cin >> id;
+        cout << "Ingrese el numero de metros vendidos: " << endl;
+        cin >> can;
         Venta temp = Venta(dataTelas[id], can, setDescuento(can));
         registroVentas.emplace_back(Venta(dataTelas[id], can, setDescuento(can)));
-        std::cout << "Desea registrar mas ventas: (0 para terminar)" << std::endl;
-        std::cin >> registro;
+        cout << "Desea registrar mas ventas: (0 para terminar)" << std::endl;
+        cin >> registro;
         dataTelas[id].actualizarReporte(can, temp.getImportePagar());
     } while (registro != 0);
 }

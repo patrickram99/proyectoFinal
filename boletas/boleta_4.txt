@@ -1,4 +1,4 @@
-BOLETA DE VENTA   :  1         
+BOLETA DE VENTA   :  4         
 Tela              :  kjdsakjsakldjaksljda
 Precio            :  9.40      
 Cantidad          :  15        

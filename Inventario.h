@@ -8,19 +8,52 @@
 
 class Inventario {
     string          mi_fecha;               //Vector de inventario para guardar versiones
-    vector<Tela>    mi_telas;               //Vector de telas
     vector<double>  mi_descuentos;          //Vector de configuración
     string          mi_inventarioVentas;
+
+    string setDate(string const &date, string const &telas){
+        cargarTelas(telas);
+        return date;
+    }
 
 public:
     Inventario(){}
 
     Inventario(string const &fecha, string const &telas, string const &ventas, string const &config)
-            : mi_fecha(fecha)
-            , mi_telas(cargarTelas(telas))
+            : mi_fecha(setDate(fecha, telas))
             , mi_descuentos(cargarConfiguracion(config))
             , mi_inventarioVentas(ventas)
     {
+    }
+
+    void mantenimiento(){
+        int op;
+        cout << "MANTENIMIENTO" << endl
+             << "¿Qué operacion desea realizar?. Ingrese el numero correspondiente" << endl
+             << "1. Consultar tela" << endl
+             << "2. Modificar tela" << endl
+             << "3. Listar telas" << endl;
+        cin >> op;
+        switch (op) {
+            default:
+                cout << "Ingrese una opcion valida";
+            case 1:
+                cout << "Ingrese la tela que desea consultar: " << endl
+                     << "0. TL0" << endl
+                     << "1. TL1" << endl
+                     << "2. TL2" << endl
+                     << "3. TL3" << endl
+                     << "4. TL4" << endl;
+                cin >> op;
+                consultarTela(op);
+                break;
+            case 2:
+                modificarTela();
+                break;
+            case 3:
+                listarTelas();
+                break;
+        }
     }
 
     void generarBoletas(){
@@ -33,7 +66,7 @@ public:
     }
 
     void consultarTela(int id){
-        mi_telas[id].imprimir();
+        dataTelas[id].imprimir();
     }
 
     void modificarTela() {
@@ -62,7 +95,7 @@ public:
 
     void listarTelas(){
         cout << "LITADO DE TELAS" << endl;
-        for(auto &t: mi_telas){
+        for(auto &t: dataTelas){
             t.imprimir();
             cout << endl;
         }
@@ -157,7 +190,7 @@ public:
         guardarConfig.close();
 
         ofstream guardaTelas("telas-data.txt");
-        for(auto t: mi_telas){
+        for(auto t: dataTelas){
             t.imprimirTxt(guardaTelas);
         }
         guardarConfig << metrosOptimos;
