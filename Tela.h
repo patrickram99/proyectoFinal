@@ -2,6 +2,7 @@
 #define PROYECTOFINAL_TELA_H
 #include <fstream>
 #include <iomanip>
+#include <string>
 #include "Config.h"
 
 struct Reporte{
@@ -10,7 +11,6 @@ struct Reporte{
     double importesTotales = 0;
 };
 
-using namespace std;
 class Tela{
     string      m_identificador;
     string      m_descripcion;
@@ -107,28 +107,33 @@ public:
         string mod;
         switch (aspecto) {
             case 0:
-                std::cout << "Ingrese el nuevo valor de la descripcion: " << std::endl;
-                std::cin >> mod;
+                cout << "Ingrese el nuevo valor de la descripcion: " << endl;
+                cin.ignore();
+                getline(cin, mod);
                 m_descripcion = mod;
                 break;
             case 1:
-                std::cout << "Ingrese el nuevo valor: " << std::endl;
-                std::cin >> mod;
+                cout << "Ingrese el nuevo valor: " << endl;
+                cin.ignore();
+                getline(cin, mod);
                 m_material = mod;
                 break;
             case 2:
-                std::cout << "Ingrese el nuevo valor: " << std::endl;
-                std::cin >> mod;
-                m_ancho = std::stoi(mod);
+                cout << "Ingrese el nuevo valor: " << endl;
+                cin.ignore();
+                getline(cin, mod);
+                m_ancho = stoi(mod);
                 break;
             case 3:
-                std::cout << "Ingrese el nuevo valor: " << std::endl;
-                std::cin >> mod;
-                m_peso = std::stoi(mod);
+                cout << "Ingrese el nuevo valor: " << endl;
+                cin.ignore();
+                getline(cin, mod);
+                m_peso = stoi(mod);
                 break;
             case 4:
                 std::cout << "Ingrese el nuevo valor: " << std::endl;
-                std::cin >> mod;
+                cin.ignore();
+                getline(cin, mod);
                 m_precio = std::stod(mod);
                 break;
             default:

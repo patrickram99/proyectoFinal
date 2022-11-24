@@ -1,5 +1,5 @@
 BOLETA DE VENTA   :  3         
-Tela              :  kjdsakjsakldjaksljda
+Tela              :  Pinstripe 
 Precio            :  9.40      
 Cantidad          :  250       
 Importe compra    :  2350.00   

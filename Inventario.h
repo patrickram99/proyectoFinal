@@ -7,8 +7,8 @@
 #include "Config.h"
 
 class Inventario {
-    string          mi_fecha;               //Vector de inventario para guardar versiones
-    vector<double>  mi_descuentos;          //Vector de configuración
+    string          mi_fecha;
+    vector<double>  mi_descuentos;
     string          mi_inventarioVentas;
 
     string setDate(string const &date, string const &telas){

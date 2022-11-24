@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/Lenguaje de Programacion 1/proyectoFinal/Config.h">
+			<Option target="proyectoFinal"/>
+		</Unit>
+		<Unit filename="D:/Lenguaje de Programacion 1/proyectoFinal/Inventario.h">
+			<Option target="proyectoFinal"/>
+		</Unit>
+		<Unit filename="D:/Lenguaje de Programacion 1/proyectoFinal/Tela.h">
+			<Option target="proyectoFinal"/>
+		</Unit>
+		<Unit filename="D:/Lenguaje de Programacion 1/proyectoFinal/Venta.h">
+			<Option target="proyectoFinal"/>
+		</Unit>
 		<Unit filename="D:/Lenguaje de Programacion 1/proyectoFinal/proyectoFinal.cpp">
 			<Option target="proyectoFinal"/>
 		</Unit>
