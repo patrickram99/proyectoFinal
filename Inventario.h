@@ -10,6 +10,8 @@ class Inventario {
     string          mi_fecha;
     vector<double>  mi_descuentos;
     string          mi_inventarioVentas;
+    string          mi_telasTxt;
+    string          mi_configTxt;
 
     string setDate(string const &date, string const &telas){
         cargarTelas(telas);
@@ -23,6 +25,8 @@ public:
             : mi_fecha(setDate(fecha, telas))
             , mi_descuentos(cargarConfiguracion(config))
             , mi_inventarioVentas(ventas)
+            , mi_telasTxt(telas)
+            , mi_configTxt(config)
     {
     }
 
@@ -182,14 +186,14 @@ public:
             cout << "No se puede crear el archivo de historial";
         }
 
-        ofstream guardarConfig("config-tienda.txt");
+        ofstream guardarConfig(mi_configTxt);
         for(auto c: mi_descuentos){
             guardarConfig << c << endl;
         }
         guardarConfig << metrosOptimos;
         guardarConfig.close();
 
-        ofstream guardaTelas("telas-data.txt");
+        ofstream guardaTelas(mi_telasTxt);
         for(auto t: dataTelas){
             t.imprimirTxt(guardaTelas);
         }
