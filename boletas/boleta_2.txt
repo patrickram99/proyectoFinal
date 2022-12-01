@@ -1,7 +1,0 @@
-BOLETA DE VENTA   :  2         
-Tela              :  Pinstripe 
-Precio            :  9.40      
-Cantidad          :  28        
-Importe compra    :  263.20    
-Descuento         :  126.34    
-Importe pagar     :  136.86    
